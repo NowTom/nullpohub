@@ -44,3 +44,4 @@ gem 'omniauth-github'
 
 gem 'haml-rails'
 gem 'travis'
+gem 'rails_config'
