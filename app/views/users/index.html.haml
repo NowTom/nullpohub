@@ -1,11 +1,31 @@
-%p.notice= notice
-%p.alert= alert
-
-- if user_signed_in?
-  Sign in as
-  %b= current_user.name
-  %p= link_to 'Events', events_path
-  %p= link_to "Sign out", destroy_user_session_path, method: :delete
-  %p= current_user.public_repos
-- else
-  %p= link_to "Sign in with Github", user_omniauth_authorize_path(:github)
+- model_class = User
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:encrypted_password)
+      %th= model_class.human_attribute_name(:current_sign_in_at)
+      %th= model_class.human_attribute_name(:last_sign_in_at)
+      %th= model_class.human_attribute_name(:current_sign_in_ip)
+      %th= model_class.human_attribute_name(:last_sign_in_ip)
+      %th= model_class.human_attribute_name(:name)
+      %th= model_class.human_attribute_name(:provider)
+      %th= model_class.human_attribute_name(:uid)
+      %th= model_class.human_attribute_name(:created_at)
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= link_to user.id, user_path(user)
+        %td= user.email
+        %td= user.encrypted_password
+        %td= user.current_sign_in_at
+        %td= user.last_sign_in_at
+        %td= user.current_sign_in_ip
+        %td= user.last_sign_in_ip
+        %td= user.name
+        %td= user.provider
+        %td= user.uid
+        %td=l user.created_at

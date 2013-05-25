@@ -25,12 +25,11 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") Nullpohub
+          %a.brand(href="/") Nullpohub
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Users", "/users"
+              %li= link_to "Events", "/events"
 
     .container-fluid
 
@@ -39,17 +38,13 @@
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to "Users", "/users"
+              %li= link_to "Events", "/events"
         .span9
           = bootstrap_flash
           = yield
-    
+
       %footer
         %p &copy; Company 2013
-    /
-      Javascripts
-      \==================================================
-    / Placed at the end of the document so the pages load faster
+
     = javascript_include_tag "application"

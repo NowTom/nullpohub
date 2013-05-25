@@ -1,0 +1,43 @@
+- model_class = User
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human
+
+%p
+  %strong= model_class.human_attribute_name(:email) + ':'
+  %br
+  = @user.email
+%p
+  %strong= model_class.human_attribute_name(:encrypted_password) + ':'
+  %br
+  = @user.encrypted_password
+%p
+  %strong= model_class.human_attribute_name(:current_sign_in_at) + ':'
+  %br
+  = @user.current_sign_in_at
+%p
+  %strong= model_class.human_attribute_name(:last_sign_in_at) + ':'
+  %br
+  = @user.last_sign_in_at
+%p
+  %strong= model_class.human_attribute_name(:current_sign_in_ip) + ':'
+  %br
+  = @user.current_sign_in_ip
+%p
+  %strong= model_class.human_attribute_name(:last_sign_in_ip) + ':'
+  %br
+  = @user.last_sign_in_ip
+%p
+  %strong= model_class.human_attribute_name(:name) + ':'
+  %br
+  = @user.name
+%p
+  %strong= model_class.human_attribute_name(:provider) + ':'
+  %br
+  = @user.provider
+%p
+  %strong= model_class.human_attribute_name(:uid) + ':'
+  %br
+  = @user.uid
+
+.form-actions
+  = link_to t('.back', :default => t("helpers.links.back")), users_path, :class => 'btn'

@@ -1,5 +1,6 @@
 Nullpohub::Application.routes.draw do
   resources :events
+  resources :users
 
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
