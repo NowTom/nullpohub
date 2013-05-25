@@ -43,6 +43,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 gem 'haml-rails'
+gem 'twitter-bootstrap-rails'
 gem 'travis'
 gem 'rails_config'
 gem 'octokit'
