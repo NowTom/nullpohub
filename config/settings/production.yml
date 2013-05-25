@@ -1,0 +1,3 @@
+github:
+  key: <%= ENV['github_key'] %>
+  token: <%= ENV['github_token'] %>
