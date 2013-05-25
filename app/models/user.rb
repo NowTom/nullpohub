@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :trackable, :omniauthable
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :provider, :uid
 
+  has_many :events
+
   class << self
     def find_for_github_oauth(auth, signed_in_resource=nil)
       user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -15,5 +17,15 @@ class User < ActiveRecord::Base
       end
       user
     end
+  end
+
+  def public_repos
+    Octokit.repos(name)
+      .select { |x| x['fork'] == false }
+      .map { |x| x['name'] }
+  end
+
+  def travis_repos
+    @travis_repos ||= Travis::Repository.find_all(owner_name: name)
   end
 end
