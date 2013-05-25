@@ -13,6 +13,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       ## omniauth
+      t.string   :name
+      t.string   :provider
       t.string   :uid, null: false
 
       t.timestamps
