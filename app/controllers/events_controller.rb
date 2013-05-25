@@ -1,8 +1,6 @@
 class EventsController < ApplicationController
   respond_to :html
 
-  before_filter :authenticate_user!
-
   def index
     @events = Event.scoped
     respond_with @events
