@@ -1,13 +1,15 @@
 ぬるぽhub
 ==========
 
-heroku
-------
+[ぬるぽHub](http://nullpohub.herokuapp.com/) は Githubのソースコードと関連するようなイベント用の開催支援サービスです。
 
-http://nullpohub.herokuapp.com/
+これから作りたい機能
+---------------------
+- ユーザーがイベントに参加できる
+- ユーザーが自分のGithubのコードをイベントに関連付けできる
 
-develop
---------
+開発者向け
+-----------
 ローカルで動かす場合、githubのアプリケーションを作成する必要がある。
 
 1. Githubの画面右上の *Account settings* を開く
