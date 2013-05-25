@@ -18,4 +18,10 @@ class User < ActiveRecord::Base
       user
     end
   end
+
+  def public_repos
+    Octokit.repos(name)
+      .select { |x| x['fork'] == false }
+      .map { |x| x['name'] }
+  end
 end

@@ -6,5 +6,6 @@
   %b= current_user.name
   %p= link_to 'Events', events_path
   %p= link_to "Sign out", destroy_user_session_path, method: :delete
+  %p= current_user.public_repos
 - else
   %p= link_to "Sign in with Github", user_omniauth_authorize_path(:github)
