@@ -4,6 +4,7 @@
 - if user_signed_in?
   Sign in as
   %b= current_user.name
+  %p= link_to 'Events', events_path
   %p= link_to "Sign out", destroy_user_session_path, method: :delete
 - else
   %p= link_to "Sign in with Github", user_omniauth_authorize_path(:github)

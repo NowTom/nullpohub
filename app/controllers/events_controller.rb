@@ -1,83 +1,42 @@
 class EventsController < ApplicationController
-  # GET /events
-  # GET /events.json
+  respond_to :html
+
+  before_filter :authenticate_user!
+
   def index
-    @events = Event.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @events }
-    end
+    @events = Event.scoped
+    respond_with @events
   end
 
-  # GET /events/1
-  # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @event }
-    end
+    @event = Event.where(id: params[:id]).first
+    respond_with @event
   end
 
-  # GET /events/new
-  # GET /events/new.json
   def new
     @event = Event.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @event }
-    end
+    respond_with @event
   end
 
-  # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = current_user.events.where(id: params[:id]).first
   end
 
-  # POST /events
-  # POST /events.json
   def create
-    @event = Event.new(params[:event])
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event = current_user.events.new(params[:event])
+    flash[:notice] = 'Event was successfully created.' if @event.save
+    respond_with @event, location: nil, errors: @event.errors
   end
 
-  # PUT /events/1
-  # PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    @event = Event.where(id: params[:id]).first
+    flash[:notice] = 'Event was successfully updated.' if @event.update_attributes(params[:event])
+    respond_with @event, location: nil, errors: @event.errors
   end
 
-  # DELETE /events/1
-  # DELETE /events/1.json
   def destroy
-    @event = Event.find(params[:id])
-    @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to events_url }
-      format.json { head :no_content }
-    end
+    @event = Event.where(id: params[:id]).first
+    flash[:notice] = 'Event was successfully updated.' if @event.destroy
+    respond_with @event, location: nil, errors: @event.errors
   end
 end
