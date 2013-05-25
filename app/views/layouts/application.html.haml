@@ -36,17 +36,14 @@
     .container-fluid
 
       .row-fluid
-        .span3
+        .span2
           .well.sidebar-nav
             %ul.nav.nav-list
               %li.nav-header Sidebar
               %li= link_to "Users", "/users"
               %li= link_to "Events", "/events"
-        .span9
+        .span10
           = bootstrap_flash
           = yield
-
-      %footer
-        %p &copy; Company 2013
 
     = javascript_include_tag "application"
