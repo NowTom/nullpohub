@@ -24,4 +24,8 @@ class User < ActiveRecord::Base
       .select { |x| x['fork'] == false }
       .map { |x| x['name'] }
   end
+
+  def travis_repos
+    @travis_repos ||= Travis::Repository.find_all(owner_name: name)
+  end
 end

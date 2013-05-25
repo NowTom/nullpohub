@@ -1,0 +1,20 @@
+- travis_repos = Hash[*current_user.travis_repos.map { |x| [x.slug.split('/').last, x] }.flatten]
+
+%h1 ホーム
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th name
+      %th travis status
+  %tbody
+    - current_user.public_repos.each do |repo_name|
+      %tr
+        %td= repo_name
+        %td
+          - if travis_repos[repo_name].nil?
+            %i.icon-minus
+          - elsif travis_repos[repo_name].green?
+            %i.icon-ok
+          - else
+            %i.icon-remove
