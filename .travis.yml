@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  - 2.0.0
+branches:
+  only:
+    - master
+    - develop
+bundler_args: --without development --path vendor/bundle
+script: "bundle exec rake db:migrate spec"
