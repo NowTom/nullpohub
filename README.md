@@ -1,7 +1,7 @@
 ぬるぽhub
 ==========
 
-TravisCi now loding...
+[![Build Status](https://travis-ci.org/sinsoku/nullpohub.png)](https://travis-ci.org/sinsoku/nullpohub)
 [![Dependency Status](https://gemnasium.com/sinsoku/nullpohub.png)](https://gemnasium.com/sinsoku/nullpohub)
 [![Code Climate](https://codeclimate.com/github/sinsoku/nullpohub.png)](https://codeclimate.com/github/sinsoku/nullpohub)
 [![Coverage Status](https://coveralls.io/repos/sinsoku/nullpohub/badge.png)](https://coveralls.io/r/sinsoku/nullpohub)
